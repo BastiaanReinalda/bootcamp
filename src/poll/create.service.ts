@@ -11,8 +11,9 @@ export class CreateService {
     private readonly pollRepository: Repository<Poll>,
   ) {}
 
-  create(poll: Poll) {
+  async create(poll: Poll) {
     this.pollRepository.save(poll);
+    return await poll.linkString;
   }
 
   async findByLinkString(LinkString: string): Promise<Poll> {

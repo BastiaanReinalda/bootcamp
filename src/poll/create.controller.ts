@@ -20,6 +20,7 @@ export class CreateController {
     poll.answerTwoScore = 0; 
     poll.answerThreeScore = 0; 
     this.createService.create(poll);
+    return poll.linkString;
   }
 
   @Get(':linkString')
