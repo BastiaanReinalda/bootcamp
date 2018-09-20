@@ -18,4 +18,8 @@ export class PollService {
   async findByLinkString(LinkString: string): Promise<Poll> {
     return await this.pollRepository.findOne({ linkString: LinkString });
   }
+
+  async updateByLinkString(poll: Poll) {
+    await this.pollRepository.save(poll);
+  }
 }

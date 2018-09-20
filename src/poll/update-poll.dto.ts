@@ -3,6 +3,12 @@ import { IsString } from 'class-validator';
 
 export class UpdatePollDto {
     @ApiModelProperty({
+        example: '1',
+        description: 'The id of the poll',
+    })
+    @IsString() readonly id: number;
+
+    @ApiModelProperty({
         example: 'Wsdaf6a',
         description: 'The link param for the poll',
     })

@@ -3,6 +3,7 @@ import { PollService } from './poll.service';
 import { CreatePollDto } from './create-poll.dto';
 import { Poll } from './poll.entity';
 import * as randomstring from 'randomstring';
+import { UpdatePollDto } from './update-poll.dto';
 
 @Controller('/Poll')
 export class PollController {
@@ -23,8 +24,23 @@ export class PollController {
     return poll;
   }
 
-  @Get(':linkString')
+  @Get(':linkString: string')
   async findByLinkString(@Param('linkString') linkString: string) {
     return this.pollService.findByLinkString(linkString);
+  }
+
+  @Patch(':id: number')
+  async patchByLinkString(@Body() updatePollDto: UpdatePollDto) {
+    const poll = new Poll();
+    poll.id = updatePollDto.id;
+    poll.linkString = updatePollDto.linkString;
+    poll.question = updatePollDto.question;
+    poll.answerOne = updatePollDto.answerOne;
+    poll.answerTwo = updatePollDto.answerTwo;
+    poll.answerThree = updatePollDto.answerThree;
+    poll.answerOneScore = updatePollDto.answerOneScore;
+    poll.answerTwoScore = updatePollDto.answerTwoScore;
+    poll.answerThreeScore = updatePollDto.answerThreeScore;
+    return this.pollService.updateByLinkString(poll);
   }
 }
