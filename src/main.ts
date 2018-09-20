@@ -7,12 +7,10 @@ async function bootstrap() {
   app.enableCors();
 
   app.use((req, res, next) => {
-    console.log(req.headers.origin);
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header('Access-Control-Allow-Credentials', true);
     next();
-  }
-  );
+  });
 
   const options = new DocumentBuilder()
     .setTitle('Create-A-Poll')

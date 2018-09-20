@@ -2,11 +2,11 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Poll {
-  
+
   @PrimaryGeneratedColumn() id: number;
 
   @Column({ length: 7 })
-  linkString : string;
+  linkString: string;
 
   @Column('text')
   question: string;
