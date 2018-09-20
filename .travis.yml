@@ -1,25 +1,6 @@
-language: nodejs
-
-before_script:
-  - npm install
-
-script:
-  - npm run start:dev
-
-after_success:
-  - npm run typedoc
-  - npm pack
-
-deploy:
-  - provider: pages
-    skip_cleanup: true
-    local_dir: docs/
-    github_token: $0fc84f2e47460d204058879b67fe7a337f4d1b55
-    on:
-      tags: true
-  - provider: npm
-    skip_cleanup: true
-    email: "bastiaan833@gmail.com"
-    api_key: $04707eb3-1aa3-4133-be57-65924c638304
-    on:
-      tags: true
+language: node_js
+node_js:
+ - 'stable'
+install:
+ - npm install
+script: tslint -c tslint.json 'src/**/*.ts'
