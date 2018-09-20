@@ -24,12 +24,12 @@ export class PollController {
     return poll;
   }
 
-  @Get(':linkString: string')
+  @Get(':linkString')
   async findByLinkString(@Param('linkString') linkString: string) {
     return this.pollService.findByLinkString(linkString);
   }
 
-  @Patch(':id: number')
+  @Patch()
   async patchByLinkString(@Body() updatePollDto: UpdatePollDto) {
     const poll = new Poll();
     poll.id = updatePollDto.id;
