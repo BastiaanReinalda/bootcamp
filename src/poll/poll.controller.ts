@@ -15,7 +15,7 @@ export class PollController {
     poll.question = createPollDto.question;
     poll.answerOne = createPollDto.answerOne;
     poll.answerTwo = createPollDto.answerTwo;
-    poll.answerThree = createPollDto.answerThree;  
+    poll.answerThree = createPollDto.answerThree;
     poll.answerOneScore = 0;
     poll.answerTwoScore = 0;
     poll.answerThreeScore = 0;
