@@ -11,7 +11,11 @@ export class PollService {
     private readonly pollRepository: Repository<Poll>,
   ) {}
 
-  async findById(Id: number): Promise<Poll> {
-    return await this.pollRepository.findOne({id: Id});
+  async create(poll: Poll) {
+    await this.pollRepository.save(poll);
+  }
+
+  async findByLinkString(LinkString: string): Promise<Poll> {
+    return await this.pollRepository.findOne({linkString: LinkString});
   }
 }

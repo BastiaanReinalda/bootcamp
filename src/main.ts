@@ -4,6 +4,15 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
+
+  app.use((req, res, next) => {
+    console.log(req.headers.origin);
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+  }
+  );
 
   const options = new DocumentBuilder()
     .setTitle('Create-A-Poll')
@@ -14,6 +23,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(3250);
 }
 bootstrap();
